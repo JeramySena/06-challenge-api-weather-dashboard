@@ -18,7 +18,7 @@ var searchCity = function(cityWeather) {
         if (response.ok) {
             response.json().then(function(location) {
                 console.log(location, city);
-                cityWeather();
+                cityWeather(location, cityWeather);
             })
         } else {
             alert("Error: City not found.");
@@ -26,7 +26,20 @@ var searchCity = function(cityWeather) {
     })
 }
 
-
-
+// Retrieve Weather Data for Searched City
+var retrieveWeather = function (cityWeather) {
+    var weatherAPI = "http://api.openweathermap.org/data/2.5/weather?access_key=3378d404aa373dff507fddd9b837d09e&query=" + weather + "&limit=1";
+    fetch(weatherAPI)
+        .then(function(response) {
+            if (response.ok) {
+                response.json().then(function(data) {
+                    console.log(data);
+                    displayWeather(data);
+                });
+            } else {
+                alert("Error: City not found.");
+            }
+    })
+}
 
 
