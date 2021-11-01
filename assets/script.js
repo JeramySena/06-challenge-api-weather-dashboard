@@ -23,17 +23,31 @@ searchButtonEl.addEventListener("click", function (event) {
       console.log(data);
       var cityGeoCoord = data[0];
       console.log(cityGeoCoord);
-      var longitide = cityGeoCoord.lon;
+      var longitude = cityGeoCoord.lon;
       var latitude = cityGeoCoord.lat;
-      console.log(longitide);
+      getCityWeather(longitude, latitude);
+      console.log(longitude);
       console.log(latitude);
     });
   });
 });
 
-// Search for City Input Data
-
 // Retrieve Weather Data for Searched City
+var getCityWeather = (longitude, latitude) 
+var apiWeatherUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon" + longitude;
+var weatherDataEl = apiWeatherUrl + apiKey;
+   console.log(weatherDataEl)
+fetch(weatherDataEl).then(function (response) {
+  console.log(response);
+  response.json().then(function(data) {
+  console.log(data) 
+
+});
+});
+
+
+//Display Retrieved Weather Data
+
 
 // Save City Searches to Local Storage
 
